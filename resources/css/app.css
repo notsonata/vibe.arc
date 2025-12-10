@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    /* Cosmic Starfield Background */
+    .cosmic-bg {
+        position: relative;
+        background: #000000;
+    }
+
+    .cosmic-bg::before,
+    .cosmic-bg::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+    }
+
+    /* Small stars layer */
+    .cosmic-bg::before {
+        background-image:
+            radial-gradient(2px 2px at 20px 30px, white, transparent),
+            radial-gradient(2px 2px at 60px 70px, white, transparent),
+            radial-gradient(1px 1px at 50px 50px, white, transparent),
+            radial-gradient(1px 1px at 130px 80px, white, transparent),
+            radial-gradient(2px 2px at 90px 10px, white, transparent),
+            radial-gradient(1px 1px at 150px 120px, white, transparent),
+            radial-gradient(1px 1px at 200px 40px, white, transparent),
+            radial-gradient(2px 2px at 170px 90px, white, transparent);
+        background-size: 200px 200px;
+        background-repeat: repeat;
+        opacity: 0.3;
+        animation: twinkle 4s ease-in-out infinite;
+    }
+
+    /* Larger stars and cosmic dust layer */
+    .cosmic-bg::after {
+        background-image:
+            radial-gradient(3px 3px at 40px 60px, rgba(255, 255, 255, 0.8), transparent),
+            radial-gradient(2px 2px at 110px 30px, rgba(255, 255, 255, 0.6), transparent),
+            radial-gradient(1px 1px at 80px 100px, rgba(200, 200, 255, 0.5), transparent),
+            radial-gradient(2px 2px at 160px 50px, rgba(255, 200, 200, 0.4), transparent),
+            radial-gradient(circle at 50% 50%, rgba(100, 100, 150, 0.05) 0%, transparent 50%);
+        background-size: 250px 250px, 250px 250px, 250px 250px, 250px 250px, 100% 100%;
+        background-repeat: repeat, repeat, repeat, repeat, no-repeat;
+        opacity: 0.4;
+        animation: twinkle-slow 6s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+
+        0%,
+        100% {
+            opacity: 0.3;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    @keyframes twinkle-slow {
+
+        0%,
+        100% {
+            opacity: 0.4;
+        }
+
+        50% {
+            opacity: 0.2;
+        }
+    }
+}
